@@ -158,8 +158,7 @@ public class Solution {
    * @return If a town is found: the index of the town in array 'towns'.
    *         Otherwise: '-1'.
    */
-  private static int binarySearch(
-      int lowerIndex, int upperIndex, int startCloud, int endCloud, Town[] towns) {
+  private static int binarySearch(int lowerIndex, int upperIndex, int startCloud, int endCloud, Town[] towns) {
 
     if (lowerIndex <= upperIndex) {
       int mid = lowerIndex + (upperIndex - lowerIndex) / 2;
