@@ -16,7 +16,10 @@ public class Solution {
       population_towns[i] = scanner.nextInt();
     }
 
-    /** Key: Town location. Value: Town object. */
+    /** 
+    * Key: Town location. 
+    * Value: Town object. 
+    */
     Map<Integer, Town> location_towns = new HashMap<Integer, Town>();
     for (int i = 0; i < numberOfTowns; i++) {
       int location = scanner.nextInt();
@@ -50,8 +53,8 @@ public class Solution {
               : location_cloud[i] + range;
       /**
        * A binary search to find any town in range of the current cloud. If such town is found,
-       * start searching from this point backwards and forwards for any other towns under the
-       * current cloud.
+       * start searching from this point backwards and forwards for any other towns in range of
+       * the current cloud.
        */
       int index = binarySearch(0, towns.length - 1, startCloud, endCloud, towns);
       if (index == -1) {
@@ -99,11 +102,13 @@ public class Solution {
   }
 
   /**
-   * Finds the maximum people that could be in towns without clouds (sunny towns). The sum of the
-   * maximum people in sunny towns is formed as follows: 1. People in towns that initially do not
-   * have any clouds. 2. The maximum number of people in towns that could become sunny towns, if
-   * exactly one cloud is removed (thus, the towns to be considered are those that have initially
-   * only one cloud).
+   * Finds the maximum people that could be in towns without clouds (sunny towns). 
+   *
+   * The value of the maximum people in sunny towns is formed as follows: 
+   * 1. People in towns that do not have any clouds. 
+   * 2. The maximum number of people in towns that could become sunny towns, if
+   *    exactly one cloud is removed. Thus, the towns to be considered are those
+   *    that have only one cloud.
    *
    * @return A long integer, representing maximum people that could be in sunny towns.
    */
@@ -119,9 +124,8 @@ public class Solution {
 
     /**
      * Key: cloud location for a cloud that covers towns with one cloud.
-     *
-     * <p>Value: sum of people from all towns under this cloud. The sum concerns only towns with one
-     * cloud above.
+     * Value: sum of people from all towns in range of this cloud. 
+     *        This sum concerns only towns with one cloud.
      */
     Map<Integer, Long> cloud_maxCover = new HashMap<Integer, Long>();
 
@@ -155,8 +159,8 @@ public class Solution {
   /**
    * Searches for a town location that is in the range of the current cloud.
    *
-   * @return A positive integer, representing the index in array 'towns', if a town is found.
-   *     Otherwise, '-1'.
+   * @return If a town is found: the index of the town in array 'towns'.
+   *         Otherwise: '-1'.
    */
   private static int binarySearch(
       int lowerIndex, int upperIndex, int startCloud, int endCloud, Town[] towns) {
@@ -177,8 +181,8 @@ public class Solution {
   }
 
   /**
-   * It is possible to have several towns at the one and the same location. In such cases, the class
-   * merges these towns into one town, combining their population.
+   * It is possible to have several towns at the one and the same location. 
+   * In such cases, the class merges these towns into one town, combining their population.
    */
   static class Town implements Comparable<Town> {
     int location;
@@ -186,9 +190,10 @@ public class Solution {
     int totalCloudsOverTown;
 
     /**
-     * Represents the location of the last cloud over the current town. The information from this
-     * variable is applied when there is only one cloud over the town, since the location of the
-     * last cloud over the town will be the location of the only cloud over this town.
+     * Represents the location of the last found cloud over the current town. 
+     * The information from this variable is applied when there is only one cloud over the town.
+     * In such cases the location of the last found cloud over the town will be the location of 
+     * the only cloud over this town.
      */
     int cloudLocation;
 
@@ -197,7 +202,9 @@ public class Solution {
       this.population = population;
     }
 
-    /** Sort locations of towns in increasing order. */
+    /** 
+    * Sort towns per increasing order of their locations. 
+    */
     @Override
     public int compareTo(Town another) {
       return this.location - another.location;
