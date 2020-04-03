@@ -187,7 +187,7 @@ public class Solution {
     /**
      * Represents the location of the last found cloud over the current town. 
      * The information from this variable is applied when there is only one cloud over the town.
-     * In such cases the location of the last found cloud over the town will be the location of 
+     * In such cases, the location of the last found cloud over the town will be the location of 
      * the only cloud over this town.
      */
     int cloudLocation;
