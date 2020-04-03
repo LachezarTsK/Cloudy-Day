@@ -26,8 +26,7 @@ public class Solution {
       if (!location_towns.containsKey(location)) {
         location_towns.put(location, new Town(location, (long) population_towns[i]));
       } else {
-        location_towns.get(location).population =
-            location_towns.get(location).population + (long) population_towns[i];
+        location_towns.get(location).population += (long) population_towns[i];
       }
     }
 
@@ -47,10 +46,8 @@ public class Solution {
       int town_lastLocation = towns[towns.length - 1].location;
       int range = scanner.nextInt();
       int startCloud = location_cloud[i] - range < 0 ? 0 : location_cloud[i] - range;
-      int endCloud =
-          location_cloud[i] + range > town_lastLocation
-              ? town_lastLocation
-              : location_cloud[i] + range;
+      int endCloud = location_cloud[i] + range > town_lastLocation ? town_lastLocation : location_cloud[i] + range;
+      
       /**
        * A binary search to find any town in range of the current cloud. If such town is found,
        * start searching from this point backwards and forwards for any other towns in range of
@@ -133,8 +130,7 @@ public class Solution {
       int totalCloudsOverTown = location_towns.get(location).totalCloudsOverTown;
 
       if (totalCloudsOverTown == 0) {
-        people_inTowns_withoutClouds =
-            people_inTowns_withoutClouds + location_towns.get(location).population;
+        people_inTowns_withoutClouds += location_towns.get(location).population;
 
       } else if (totalCloudsOverTown == 1) {
         int cloudLocation = location_towns.get(location).cloudLocation;
